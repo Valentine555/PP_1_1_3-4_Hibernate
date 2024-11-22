@@ -91,18 +91,17 @@ public class UserDaoJDBCImpl implements UserDao {
             System.err.println("Соединение с базой данных не установлено.");
             return null;
         }
+        List<User> users=new ArrayList<>();
         try (Statement statement=connection.createStatement(); ResultSet resultSet=statement.executeQuery("select * from users")){
-           List<User> users=new ArrayList<>();
             while (resultSet.next()){
                 User user=new User(resultSet.getString("name"), resultSet.getString("lastName"), resultSet.getByte("age"));
                 users.add(user);
             }
-            return users;
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return users;
     }
 
     public void cleanUsersTable() {
