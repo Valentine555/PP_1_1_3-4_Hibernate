@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
    //здесь обработка всех искл
-   Connection connection=Util.getConnection();
+   private Connection connection=Util.getConnection();
 
     public UserDaoJDBCImpl() {
     }
